@@ -210,6 +210,12 @@ body{transition:background-color .35s ease,color .35s ease}
   .plo li{grid-template-columns:48px 1fr 34px}
   .pb{display:none}
 }
+
+.cv-btn{display:inline-block;margin-top:18px;font-family:var(--sans);font-size:14.5px;font-weight:600;
+  color:var(--panel);background:var(--signal);text-decoration:none;padding:9px 18px;border-radius:2px;
+  transition:transform .25s cubic-bezier(.22,.61,.36,1),box-shadow .25s ease}
+.cv-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.cv-btn:focus-visible{outline:2px solid var(--panel-ink);outline-offset:3px}
 </style>
 </head>
 <body>
@@ -241,6 +247,7 @@ body{transition:background-color .35s ease,color .35s ease}
             <a href="https://github.com/mohamedshehabb11-ops" target="_blank" rel="noopener">GitHub</a>
             <span>Kuala Lumpur, Malaysia</span>
           </div>
+          <a class="cv-btn" href="CV.pdf" download="Mohamed_Shehab-Eldin_Mohamed_CV.pdf">Download CV</a>
         </div>
       </div>
       <div class="hero-text">
