@@ -163,6 +163,53 @@ body{transition:background-color .35s ease,color .35s ease}
   .theme-btn.spin{transform:none}
   .head::after{transition:none}
 }
+
+/* ---------- reflection ---------- */
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.q{background:var(--paper);padding:20px 22px 18px;position:relative}
+.q::before{content:"";position:absolute;left:0;top:0;height:2px;width:36px;background:var(--signal)}
+.qh{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:10px}
+.qh h3{margin:0}
+.qh span{font-family:var(--mono);font-size:12px;color:var(--ink-soft);white-space:nowrap}
+.q ul{margin:0;padding-left:17px}
+.q li{font-size:15px;margin-bottom:6px}
+
+.att{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:36px;align-items:center}
+.radar{width:100%;height:auto;display:block}
+.rg{fill:none;stroke:var(--rule);stroke-width:1}
+.rt{font-family:var(--mono);font-size:9.5px;fill:var(--ink-soft)}
+.rl{font-family:var(--mono);font-size:12px;fill:var(--ink-soft)}
+.rl.hot{fill:var(--signal-deep);font-weight:600}
+.rd{fill:var(--signal);fill-opacity:.14;stroke:var(--signal);stroke-width:2.5;stroke-linejoin:round}
+.rh{fill:var(--paper);stroke:var(--signal-deep);stroke-width:2.5}
+@media (prefers-reduced-motion:no-preference){
+  .reveal .rd{stroke-dasharray:1100;stroke-dashoffset:1100;fill-opacity:0;transition:stroke-dashoffset 1.6s cubic-bezier(.65,0,.35,1) .2s, fill-opacity .6s ease 1.5s}
+  .reveal.in .rd{stroke-dashoffset:0;fill-opacity:.14}
+  .reveal .rh{opacity:0;transition:opacity .4s ease 1.7s}
+  .reveal.in .rh{opacity:1}
+}
+
+.plo{list-style:none;margin:0;padding:0}
+.plo li{display:grid;grid-template-columns:54px 1fr 70px 38px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--rule);max-width:none;margin:0}
+.plo li:last-child{border-bottom:0}
+.pn{font-family:var(--mono);font-size:12.5px;color:var(--ink-soft)}
+.pd{font-size:14.5px;line-height:1.35}
+.pb{height:4px;background:var(--rule);position:relative;overflow:hidden}
+.pb i{position:absolute;left:0;top:0;bottom:0;background:var(--ink-soft)}
+.pv{font-family:var(--mono);font-size:13px;text-align:right}
+.plo li.hot .pn,.plo li.hot .pv{color:var(--signal-deep);font-weight:600}
+.plo li.hot .pb i{background:var(--signal)}
+@media (prefers-reduced-motion:no-preference){
+  .reveal .pb i{transform:scaleX(0);transform-origin:left;transition:transform .9s cubic-bezier(.22,.61,.36,1) .3s}
+  .reveal.in .pb i{transform:scaleX(1)}
+}
+@media (max-width:720px){
+  .swot{grid-template-columns:1fr}
+  .att{grid-template-columns:1fr;gap:24px}
+  .att-chart{max-width:320px;margin:0 auto}
+  .plo li{grid-template-columns:48px 1fr 34px}
+  .pb{display:none}
+}
 </style>
 </head>
 <body>
@@ -380,20 +427,40 @@ body{transition:background-color .35s ease,color .35s ease}
 
 <section id="reflection" class="panel" role="tabpanel" aria-labelledby="tab-reflection">
   <div class="wrap" style="padding-top:46px">
+
     <div class="block">
-      <div class="head">
-        <h2>Reflection</h2>
-        <span class="when">In preparation</span>
+      <div class="head"><h2>Reflection</h2><span class="when">Programme outcomes</span></div>
+      <p>A self-assessment of the degree against the twelve Programme Learning Outcomes of the APU School of Engineering, using results issued by the module lecturer and evidence drawn from coursework, projects and the industrial placement.</p>
+    </div>
+
+    <div class="block">
+      <div class="head"><h2>SWOT analysis</h2></div>
+      <div class="swot"><div class="q"><div class="qh"><h3>Strengths</h3><span>PLO1–5 · 10 · 11</span></div><ul><li>Analysis tested against physical behaviour, not accepted on paper</li><li>Localisation failure in a glazed corridor diagnosed, then redesigned</li><li>ROS 2, SolidWorks CAM and MATLAB applied across project types</li><li>Defined share delivered within a multidisciplinary group project</li><li>Core robotics stack acquired outside taught modules</li></ul></div><div class="q"><div class="qh"><h3>Weaknesses</h3><span>PLO6 · 8 · 12</span></div><ul><li>Safety and legal exposure observed rather than owned</li><li>Malaysian legislation known at recognition level only</li><li>Costing has rarely driven a design decision</li><li>Documentation compressed into the end of projects</li></ul></div><div class="q"><div class="qh"><h3>Opportunities</h3><span>PLO8 · 11 · 12</span></div><ul><li>Formal risk assessment built into the final year project</li><li>BEM graduate registration and IEM membership</li><li>Industrial training as exposure to costing and scheduling</li><li>Edge AI and Industry 4.0 converging on the chosen specialisation</li></ul></div><div class="q"><div class="qh"><h3>Threats</h3><span>PLO3 · 8 · 11</span></div><ul><li>Fast turnover of robotics and machine learning toolchains</li><li>Framework dependency concealing weak fundamentals</li><li>Competitive graduate engineering market</li><li>Regulatory divergence between Egyptian and Malaysian practice</li></ul></div></div>
+    </div>
+
+    <div class="block">
+      <div class="head"><h2>PLO attainment</h2><span class="when">Lecturer-issued</span></div>
+      <div class="att">
+        <div class="att-chart"><svg class="radar" viewBox="0 0 400 400" role="img" aria-label="Radar chart of twelve PLO results: all at 1.00 except PLO8 at 0.67.">
+  <polygon class="rg" points="200.0,172.4 213.8,176.1 223.9,186.2 227.6,200.0 223.9,213.8 213.8,223.9 200.0,227.6 186.2,223.9 176.1,213.8 172.4,200.0 176.1,186.2 186.2,176.1"/><polygon class="rg" points="200.0,144.8 227.6,152.2 247.8,172.4 255.2,200.0 247.8,227.6 227.6,247.8 200.0,255.2 172.4,247.8 152.2,227.6 144.8,200.0 152.2,172.4 172.4,152.2"/><polygon class="rg" points="200.0,117.2 241.4,128.3 271.7,158.6 282.8,200.0 271.7,241.4 241.4,271.7 200.0,282.8 158.6,271.7 128.3,241.4 117.2,200.0 128.3,158.6 158.6,128.3"/><polygon class="rg" points="200.0,89.6 255.2,104.4 295.6,144.8 310.4,200.0 295.6,255.2 255.2,295.6 200.0,310.4 144.8,295.6 104.4,255.2 89.6,200.0 104.4,144.8 144.8,104.4"/><polygon class="rg" points="200.0,62.0 269.0,80.5 319.5,131.0 338.0,200.0 319.5,269.0 269.0,319.5 200.0,338.0 131.0,319.5 80.5,269.0 62.0,200.0 80.5,131.0 131.0,80.5"/><line class="rg" x1="200" y1="200" x2="200.0" y2="62.0"/><line class="rg" x1="200" y1="200" x2="269.0" y2="80.5"/><line class="rg" x1="200" y1="200" x2="319.5" y2="131.0"/><line class="rg" x1="200" y1="200" x2="338.0" y2="200.0"/><line class="rg" x1="200" y1="200" x2="319.5" y2="269.0"/><line class="rg" x1="200" y1="200" x2="269.0" y2="319.5"/><line class="rg" x1="200" y1="200" x2="200.0" y2="338.0"/><line class="rg" x1="200" y1="200" x2="131.0" y2="319.5"/><line class="rg" x1="200" y1="200" x2="80.5" y2="269.0"/><line class="rg" x1="200" y1="200" x2="62.0" y2="200.0"/><line class="rg" x1="200" y1="200" x2="80.5" y2="131.0"/><line class="rg" x1="200" y1="200" x2="131.0" y2="80.5"/><text class="rt" x="204" y="176.4">0.2</text><text class="rt" x="204" y="148.8">0.4</text><text class="rt" x="204" y="121.2">0.6</text><text class="rt" x="204" y="93.6">0.8</text><text class="rt" x="204" y="66.0">1.0</text>
+  <polygon class="rd" points="200.0,62.0 269.0,80.5 319.5,131.0 338.0,200.0 319.5,269.0 269.0,319.5 200.0,338.0 153.8,280.1 80.5,269.0 62.0,200.0 80.5,131.0 131.0,80.5"/>
+  <circle class="rh" cx="153.8" cy="280.1" r="5"/>
+  <text class="rl" x="200.0" y="45.3" text-anchor="middle">1</text><text class="rl" x="279.4" y="66.6" text-anchor="middle">2</text><text class="rl" x="337.4" y="124.7" text-anchor="middle">3</text><text class="rl" x="358.7" y="204.0" text-anchor="middle">4</text><text class="rl" x="337.4" y="283.3" text-anchor="middle">5</text><text class="rl" x="279.4" y="341.4" text-anchor="middle">6</text><text class="rl" x="200.0" y="362.7" text-anchor="middle">7</text><text class="rl hot" x="120.7" y="341.4" text-anchor="middle">8</text><text class="rl" x="62.6" y="283.3" text-anchor="middle">9</text><text class="rl" x="41.3" y="204.0" text-anchor="middle">10</text><text class="rl" x="62.6" y="124.6" text-anchor="middle">11</text><text class="rl" x="120.6" y="66.6" text-anchor="middle">12</text>
+</svg></div>
+        <ul class="plo"><li class=""><span class="pn">PLO1</span><span class="pd">Mathematics, science and engineering principles</span><span class="pb"><i style="width:100%"></i></span><span class="pv">1.00</span></li><li class=""><span class="pn">PLO2</span><span class="pd">Complex engineering problem analysis</span><span class="pb"><i style="width:100%"></i></span><span class="pv">1.00</span></li><li class=""><span class="pn">PLO3</span><span class="pd">Selection and use of tools and techniques</span><span class="pb"><i style="width:100%"></i></span><span class="pv">1.00</span></li><li class=""><span class="pn">PLO4</span><span class="pd">Investigation using research techniques</span><span class="pb"><i style="width:100%"></i></span><span class="pv">1.00</span></li><li class=""><span class="pn">PLO5</span><span class="pd">Design of innovative solutions</span><span class="pb"><i style="width:100%"></i></span><span class="pv">1.00</span></li><li class=""><span class="pn">PLO6</span><span class="pd">Effective and professional communication</span><span class="pb"><i style="width:100%"></i></span><span class="pv">1.00</span></li><li class=""><span class="pn">PLO7</span><span class="pd">Sustainable development and environment</span><span class="pb"><i style="width:100%"></i></span><span class="pv">1.00</span></li><li class="hot"><span class="pn">PLO8</span><span class="pd">Safety, health, social, cultural and legal responsibility</span><span class="pb"><i style="width:67%"></i></span><span class="pv">0.67</span></li><li class=""><span class="pn">PLO9</span><span class="pd">Professional and ethical responsibility</span><span class="pb"><i style="width:100%"></i></span><span class="pv">1.00</span></li><li class=""><span class="pn">PLO10</span><span class="pd">Teamwork in multidisciplinary settings</span><span class="pb"><i style="width:100%"></i></span><span class="pv">1.00</span></li><li class=""><span class="pn">PLO11</span><span class="pd">Independent and life-long learning</span><span class="pb"><i style="width:100%"></i></span><span class="pv">1.00</span></li><li class=""><span class="pn">PLO12</span><span class="pd">Entrepreneurship, project management and economics</span><span class="pb"><i style="width:100%"></i></span><span class="pv">1.00</span></li></ul>
       </div>
-      <div class="pending">
-        <p>A structured self-assessment against the twelve programme outcomes of the Mechatronic Engineering degree. It is being written now and will be published here once the outcome descriptors are confirmed.</p>
-      </div>
+    </div>
+
+    <div class="block">
+      <div class="head"><h2>Focus: PLO8</h2><span class="when">0.67</span></div>
+      <p>The only outcome recorded below full attainment, and an accurate reading rather than an anomaly. Safety practice during the placement was followed rather than defined, and hazard identification in university projects was never written into the design record.</p>
       <ul class="todo">
-        <li><span class="k">01</span><span class="v"><strong>SWOT analysis</strong><span>Strengths, weaknesses, opportunities and threats, each tied to specific project and placement evidence rather than stated in general terms.</span></span></li>
-        <li><span class="k">02</span><span class="v"><strong>Outcome attainment</strong><span>Recorded attainment across all twelve programme outcomes, presented as a table and a radar chart.</span></span></li>
-        <li><span class="k">03</span><span class="v"><strong>Evaluation and improvement plan</strong><span>Where attainment fell short, why, and the actions taken in response.</span></span></li>
+        <li><span class="k">01</span><span class="v"><strong>Formal risk assessment</strong><span>Electrical, mechanical and operational risk of a mobile robot sharing space with people, documented within the final year project.</span></span></li>
+        <li><span class="k">02</span><span class="v"><strong>Legislation in application</strong><span>OSHA 1994, EQA 1974 and the Registration of Engineers Act 1967 studied for how each constrains a design decision.</span></span></li>
+        <li><span class="k">03</span><span class="v"><strong>Responsibility assumed</strong><span>Industrial training treated as the setting where safety responsibility is owned rather than observed.</span></span></li>
       </ul>
     </div>
+
   </div>
 </section>
 
